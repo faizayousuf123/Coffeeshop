@@ -11,13 +11,13 @@ if(isset($_POST['add_categories'])) {
     $meta_title=($_POST['meta_title']);
     $meta_description=($_POST['meta_description']);
     $meta_key=($_POST['meta_key']);
-    $status=isset($_POST['status'])? 1 : 0; 
-    $popular=isset($_POST['popular']) ? 1 : 0; 
+    $status=($_POST['status']); 
+    $popular=($_POST['trending']); 
     $path = "../uploads/";
 
     if(isset($_FILES['image']['name']) && $_FILES['image']['name']!= ''){
    $image= $_FILES['image']['name'];
-   $image_ext=pathinfo($image,PATHINFO_EXTENSION);
+   $image_ext= pathinfo($image,PATHINFO_EXTENSION);
     $filename=time() . '.' . $image_ext;
     $path="../uploads";
     move_uploaded_file($_FILES['image']['tmp_name'],$path . '/' .$filename);
@@ -50,49 +50,43 @@ if(isset($_POST['add_categories'])) {
   $meta_title=($_POST['meta_title']);
   $meta_description=($_POST['meta_description']);
   $meta_key=($_POST['meta_key']);
-  $status=isset($_POST['status'])? 1 : 0;
-  $popular=isset($_POST['popular'])? 1 : 0;
+  $status=($_POST['status']);
+  $popular=($_POST['trending']);
 
- $new_image=$_FILES['image']['name'];
- $old_image=$_POST['old_image'];
+ $new_image= $_FILES['image']['name'];
+ $old_image= $_POST['old_image'];
+ $update_Filename = $old_image; // default old image
   
- if($new_image != ""){
- $update_Filename=$new_image;
+ 
+  if (!empty($_FILES['image']['name'])) {
+    $image_ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+     $update_Filename = time().'.'.$image_ext;
+
+move_uploaded_file($_FILES['image']['tmp_name'], "../uploads/" . $update_Filename);
+   //delete file if it exists
+    if(file_exists("../uploads/".$old_image))
+    {
+     unlink("../uploads/".$old_image);
+    }
+   
   }
-  else{
-    $update_Filename=$old_image;
-  }
+
 
   $path = "../uploads/";
   $update_query="UPDATE categories SET name='$name',slug='$slug',description='$description',meta_title='$meta_title',meta_description='$meta_description',meta_key='$meta_key',status='$status',popular='$popular',image='$update_Filename' WHERE id='$id' ";
  $result=mysqli_query($conn,$update_query);
-
- if($result)
- {
  
-  //move wd new image
-  if($_FILES['image']['name'] !=""){
-    move_uploaded_file($_FILES['image']['tmp_name'], $path.$update_Filename);
-   //delete file if it exists
-   // if(file_exists("../uploads/".$old_image))
-    {
-   //  unlink("../uploads/".$old_image);
-    }
-   {
-      $_SESSION['message'] = "Category updated successfully!";
-      header("Location:edit.php?id=$id");
-      exit();
-    }
-
-  }
-  else{
-    $_SESSION['message'] = "something went wrong";
-
-  }
- 
- 
+ if(mysqli_query($conn, $update_query)){
+  $_SESSION['message'] = "Category updated successfully!";
+  header("Location:edit.php?id=$id");
+  exit();
+} else {
+  die("Update failed: " . mysqli_error($conn));
 }
- }
+}
+
+
+ //DELETE CATEGORY
 
  else if(isset($_POST['delete_category'])){
   $id=($_POST['id']);

@@ -15,7 +15,7 @@ include('../includes/footer.php');
                 <h4>Add Products</h4>
                 </div>
                 <div class="card-body">
-                   <form action="manage_product.php" method="POST" enctype="multipart/form-data">
+                   <form action="manage_product.php"method="POST"enctype="multipart/form-data">
                    <div class="col mb-3">
                    <div class="col-md-12">
                             <label for="">Select category</label>
@@ -26,7 +26,7 @@ include('../includes/footer.php');
                    $categories=mysqli_query($conn,$sql);
 
                   if(mysqli_num_rows($categories) > 0 ){
-                    foreach( $categories as $item){
+                    while($item=mysqli_fetch_assoc($categories)){
                   
                 ?>
                     <option value="<?= $item['id'];?>">
@@ -93,13 +93,15 @@ include('../includes/footer.php');
 
                            <div class="col mb-3">
                            <div class="mt-12">
-                           <label for="">status</label>
+                           <label for="" >status</label>
+                           <input type="hidden" name="status" value="0">
                            <input type="checkbox" name="status" value="1">
                           </div>
 
                           <div class="col mb-3">
                            <div class="mt-12">
-                           <label for="">trending</label>
+                           <label>trending</label>
+                           <input type="hidden" name="trending" value="0">
                            <input type="checkbox" name="trending" value="1">
                           </div>
                           

@@ -21,8 +21,8 @@ if(isset($_POST['update_product'])){
     $meta_title=($_POST['meta_title']);
    $meta_description=($_POST['meta_description']);
    $meta_keywords=($_POST['meta_keywords']); 
-    $status = isset($_POST['status'])? '1':'0';
-    $trending = isset($_POST['trending'])?'1':'0';
+    $status = ($_POST['status']);
+    $trending = ($_POST['trending']);
     $path = "../uploads/";
     
 
@@ -41,7 +41,7 @@ if(isset($_POST['update_product'])){
 
     //query update
   
-   $sql= "UPDATE products SET name='$name',slug='$slug',small_description='$small_description',description='$description',original_price='$original_price',selling_price='$selling_price',qty='$qty',meta_title='$meta_title',meta_description='$meta_description',meta_keywords='$meta_keywords',image='$update_Filename',status='$status',trending='$trending' WHERE id='$id'";
+   $sql= "UPDATE products SET category_id='$category_id',name='$name',slug='$slug',small_description='$small_description',description='$description',original_price='$original_price',selling_price='$selling_price',qty='$qty',meta_title='$meta_title',meta_description='$meta_description',meta_keywords='$meta_keywords',image='$update_Filename',status='$status',trending='$trending' WHERE id='$id'";
    $result=mysqli_query($conn,$sql);
    if($result)
    {
@@ -60,7 +60,7 @@ if(isset($_POST['update_product'])){
 }
 }
    
- $_SESSION['message']= "update category sucessfully";
+ $_SESSION['message']= " Product update sucessfully";
   header("Location:edit_product.php?id=$id");
    exit();
    }else{
@@ -91,7 +91,7 @@ if(isset($_POST['update_product'])){
  
   
     <div class="card">
-        <divclass="card-header">
+        <div class="card-header">
             <h4>Edit Products</h4>
  </div>
             <div class="card-body">
@@ -160,7 +160,7 @@ if(isset($_POST['update_product'])){
                         <input type="hidden" name="old_image" value="<?=$row['image']; ?>">
                         <input type="file"  name="image" class="form-control mb-2">
                         <label>current image</label>
-                        <img src="uploads/<?= $row['image'];?>" width="50px" height="50px" alt="">
+                        <img src="../uploads/<?= $row['image'];?>" width="50px" height="50px" alt="">
                         </div>
                        <div class="col-md-12">
                         <label for="Quantity" class="form-label">Quantity</label>
@@ -169,14 +169,16 @@ if(isset($_POST['update_product'])){
 
                        <div class="col mb-3">
                        <div class="mt-12">
-                       <label for="">status</label>
-                       <input type="checkbox" name="status" <?=($row['status']=='1')?'checked':''?>>
+                       <label>status</label>
+                       <input type="hidden" name="status" value="1">
+                       <input type="checkbox" name="status" value="1" <?=($row['status']=='1')?'checked':''?>>
                       </div>
 
                       <div class="col mb-3">
                        <div class="mt-12">
-                       <label for="">trending</label>
-                       <input type="checkbox"   name="trending" <?=($row['trending']=='1')?'checked':''?>>
+                       <label>trending</label>
+                       <input type="hidden" name="trending" value="0">
+                       <input type="checkbox" name="trending" value="1" <?=($row['trending']=='1')?'checked':''?>>
                       </div>
                       
                        

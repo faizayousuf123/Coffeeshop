@@ -1,10 +1,9 @@
 <?php
 session_start();
-
+include('../config.php');
 include('../includes/header.php');
 include('../includes/sidebar.php');
 include('../includes/footer.php');
-
 ?>
 
 <div class="container">
@@ -54,13 +53,15 @@ include('../includes/footer.php');
                            </div>
                            <div class="col mb-3">
                            <div class="mt-12">
-                           <label for="">status</label>
+                           <label >status</label>
+                           <input type="hidden" name="status" value="1">
                            <input type="checkbox" name="status">
                            </div>
                            <div class="col mb-3">
                            <div class="mt-12">
-                           <label for="">popular</label>
-                           <input type="checkbox" name="status">
+                           <label >trending</label>
+                           <input type="hidden" name="trending" value="0">
+                           <input type="checkbox" name="trending">
                            </div>
                            <div class="col mb-3">
                            <div class="col-md-12">

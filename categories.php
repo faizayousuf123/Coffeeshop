@@ -1,5 +1,6 @@
 <?php
 include('config.php');
+include('includes/header.php');
 
 
 include('./functions/collectionlogic.php');
@@ -25,14 +26,16 @@ include('./functions/collectionlogic.php');
             
          ?>
          <div class="col-md-3 mb-2">
+            <a href="product-view.php?product=<?= $item['slug']; ?>">
             <div class="card shadow">
                 <div class="card-body">
-  <img src="uploads/<?= $item['image']; ?>" alt="category image" class="w-100">
+  <img src="uploads/<?= $item['image']; ?>" alt="category image" class="card-img-top" 
+                   style="height:200px; object-fit:cover;"> 
   <h4 class="text-center"><?= $item['name']; ?></h4>
 
             </div>
          </div>
-
+         </a>
          </div>
         
          <?php

@@ -76,12 +76,14 @@ include('../includes/footer.php');
                            </div>
                            <div class="col mb-3">
                            <div class="mt-12">
-                           <label for="">status</label>
+                           <label>status</label>
+                           <input type="hidden" name="status" value="0">
                            <input type="checkbox" name="status" value="1"<?= $data['status'] == 1 ? 'checked' : "" ?>>
                            </div>
                            <div class="col mb-3">
                            <div class="mt-12">
-                           <label for="">popular</label>
+                           <label>trending</label>
+                           <input type="hidden" name="trending" value="0">
                            <input type="checkbox" name="popular" value="1"<?= $data['popular'] == 1 ? 'checked' : "" ?>>
                            </div>
                            <div class="col mb-3">

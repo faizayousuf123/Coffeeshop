@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 include('../config.php');
 
@@ -48,7 +47,7 @@ include('../includes/sidebar.php');
             <td>
                  <img src="../uploads/<?php echo $row['image'];?>" width="50px" height="50px" alt="product.php">
         </td>
-        <th><?php echo $row['status'] =='0'? "visible" : "Hidden" ?></th>
+        <th><?php echo $row['status'] =='1'? "visible" : "Hidden" ?></th>
             <th>
                 <a href="edit_product.php?id=<?php echo $row['id'];?>" class="btn btn-sm btn-success"> Edit</a>
             </th>
