@@ -47,10 +47,10 @@ if($product)
             </div>
             <div class="row">
                 <div class="col-md-4">
-                <div class="product_data">
+          
              <div class="input-group mb-3" style="width:130px">
   <button class="input-group-text decrement-btn">-</button>
-  <input type="text" class= "form-control input-qty text-center bg-white" value="1" >
+  <input type="text" class ="form-control input-qty text-center bg-white" value="1" disabled>
   <button class="input-group-text increment-btn">+</button>
 </div>
                 </div>
@@ -74,7 +74,7 @@ if($product)
             
             </div>
         </div>
-       </div>
+  
 
  <?php
 }else {
@@ -86,3 +86,4 @@ else{
 }
 
 ?>
+<script>"../assets/custom.js"</script>

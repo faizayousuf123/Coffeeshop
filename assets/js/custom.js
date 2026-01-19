@@ -1,3 +1,7 @@
+<script>
+console.log("Console is working ✅");
+</script>
+
 $(document).ready(function(){
 
 $('.increment-btn').click(function(e){
