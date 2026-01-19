@@ -47,7 +47,7 @@ $category_id = $category['id'];
           {
           ?>
           <div class="col-md-4 mb-2">
-          <a href="products_view.php?category=<?=$item['slug']; ?>">
+          <a href="product_view.php?product=<?=$item['slug']; ?>">
             <div class="card shadow">
                 <div class="card-body text-center">
                     <img src="uploads/<?= $item['image']; ?>" alt="product image" class="card-img-top" 
