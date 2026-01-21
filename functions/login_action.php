@@ -15,11 +15,13 @@ if(isset($_POST['login']))
   {
   
    $userdata=mysqli_fetch_array($result);
+    $userid=$userdata['id'];
     $name=$userdata['name'];
     $email=$userdata['email'];
     $role_as=$userdata['role_as'];
 
     $_SESSION['register']= [
+      'user_id'=>$userid,
       'name'=> $name,
        'email'=> $email,
       'role_as' => $role_as

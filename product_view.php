@@ -21,7 +21,7 @@ if($product)
     </div></div>
  
  <div class="bg-light py-4">
- <div class="container product_data mt-3">
+ <div class="container mt-3">
     <div class="row">
         <div class="col-md-4">
             <img src="uploads/<?= $product['image']; ?>" alt="product image" class="w-100">
@@ -46,18 +46,17 @@ if($product)
                 
             </div>
             <div class="row">
-                <div class="col-md-4">
-          
-             <div class="input-group mb-3" style="width:130px">
-  <button class="input-group-text decrement-btn">-</button>
-  <input type="text" class ="form-control input-qty text-center bg-white" value="1" disabled>
-  <button class="input-group-text increment-btn">+</button>
-</div>
+                <div class="d-flex align-items-center mt-2">
+         <button onclick="changeQty(this, -1)">-</button>
+         <input type="number" class="qty form-control text-center mx-2"
+             style="width:60px;" value="1" min="1">
+        <button onclick="changeQty(this, 1)">+</button>
                 </div>
                 </div>
+                
                <div class="row mt-3">
                 <div class="col-md-6">
-         <button class="btn btn-primary px-4"><i class="fa fa-shopping-cart me-2"></i>Add to cart</button>
+         <button class="btn btn-primary px-4 addToCartBtn" value="<?= $product['id'];?>"><i class="fa fa-shopping-cart me-2"></i>AddToCart</button>
               </div>
 
               <div class="col-md-6">
@@ -84,6 +83,5 @@ if($product)
 else{
     echo "something wrong";
 }
-
+include('includes/footer.php');
 ?>
-<script>"../assets/custom.js"</script>
