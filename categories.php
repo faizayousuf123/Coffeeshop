@@ -1,4 +1,5 @@
-<?php
+<?php 
+session_start();
 include('config.php');
 include(__DIR__ . '/includes/header.php');
 include('includes/navbar.php');

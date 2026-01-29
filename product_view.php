@@ -1,4 +1,5 @@
-<?php
+<?php 
+session_start();
 include('config.php');
 include('includes/header.php');
 include('includes/navbar.php');
@@ -57,7 +58,7 @@ if($product)
 </div>
     
              
-     
+   <div class="row mt-3">
              <div class="col-md-6"> 
        <button class="btn btn-primary px-4 addToCartBtn" value="<?=$product['id'];?>"><i class="fa fa-shopping-cart me-2"></i>Add To Cart</button>
               </div>
