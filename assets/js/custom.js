@@ -26,12 +26,7 @@ $(document).ready(function () {
   $(document).on('click', '.addToCartBtn', function (e) {
     e.preventDefault();
 
-    
 
-
-
-});
-  
 
   var qty = $(this).closest('.product_data').find('.input-qty').val();
 
@@ -44,8 +39,7 @@ $(document).ready(function () {
     url: "functions/handlecart.php",
     data: {
      "prod_id" : prod_id,
-
-     "prod_qty" : qty,
+      "prod_qty" : qty,
       "scope" : "add"
     }, 
     
@@ -76,11 +70,11 @@ $(document).ready(function () {
       }
         
       
-    
+    });
    });
 
   });
-})
+
 
  
   
