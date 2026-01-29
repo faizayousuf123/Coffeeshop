@@ -1,6 +1,7 @@
 <?php
 include('config.php');
-include('./includes/header.php');
+include('includes/header.php');
+include('includes/navbar.php');
 include('functions/collectionlogic.php');
 
 if(isset($_GET['category'])){

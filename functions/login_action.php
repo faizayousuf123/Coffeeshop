@@ -13,14 +13,15 @@ if(isset($_POST['login']))
 
   if(mysqli_num_rows($result) >0)
   {
-  
+   $_SESSION['auth']= true;
+
    $userdata=mysqli_fetch_array($result);
     $userid=$userdata['id'];
     $name=$userdata['name'];
     $email=$userdata['email'];
     $role_as=$userdata['role_as'];
 
-    $_SESSION['register']= [
+    $_SESSION['auth_user']= [
       'user_id'=>$userid,
       'name'=> $name,
        'email'=> $email,

@@ -1,51 +1,72 @@
-//$(document).ready(function () {
-    var qty = $('.increment-btn').click(function (e) { 
-        e.preventDefault();
-        $(this)
-        .closest('.product_data')
-        .find('.input-qty')
-        .val();
-        var qty = input.value;
-      var value = parseInt(qty,10);
-      value = isNaN(value)? 0 :value;
-      if(value < 10){
-        value++;
-       
-        $(this).closest('.product_data').find('.input-qty').val(value);
-      }
+$(document).ready(function () {
+  $(document).on('click', '.increment-btn', function () {
+    let input = $(this).siblings('.input-qty');
+    let val = parseInt(input.val()) || 1;
+  
+    if (val < 10) {
+      input.val(val + 1);
+    }
+  });
+  
+  $(document).on('click', '.decrement-btn', function () {
+    let input = $(this).siblings('.input-qty');
+    let val = parseInt(input.val()) || 1;
+  
+    if (val > 1) {
+      input.val(val - 1);
+    }
+  }); 
+});
+  
 
-    });
-//});
-function changeQty(btn, step) {
-    let input = btn.parentElement.querySelector('.qty');
-    let value = parseInt(input.value) + step;
-    input.value = value < 1 ? 1 : value;
-}
+ //addtocart
+ 
 $(document).ready(function () {
  
   $(document).on('click', '.addToCartBtn', function (e) {
     e.preventDefault();
+
+    
+
+
+
+});
+  
+
+  var qty = $(this).closest('.product_data').find('.input-qty').val();
+
    var prod_id = $(this).val();
+
+ 
 
    $.ajax({
     method: "POST",
     url: "functions/handlecart.php",
-    data:{
-   "prod_id" : prod_id,
-    "prod_qty" : prod_qty,
-     "scope" : "add"
+    data: {
+     "prod_id" : prod_id,
+
+     "prod_qty" : qty,
+      "scope" : "add"
     }, 
     
     success: function (response) {
       if(response == 201)
         {
-        alertify.success("Product added to cart")
+        alertify.success("Product added to cart");
       }
+      else if(response === "existing")
+        {
+         alertify.warning("Product already in cart");
+     }
+        
       else if(response == 401)
         {
        
-        alertify.success("Product added to cart");
-      }
+        alertify.success("Please login first to add items to cart");setTimeout(function () {
+          window.location.href = "login.php";
+        }, 1500);
+      
+    }
       else if(response == 500)
         {
        
@@ -58,8 +79,9 @@ $(document).ready(function () {
     
    });
 
-});
+  });
+})
+
  
   
   
-});

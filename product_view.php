@@ -1,6 +1,7 @@
 <?php
 include('config.php');
-include('./includes/header.php');
+include('includes/header.php');
+include('includes/navbar.php');
 include('functions/collectionlogic.php');
 
 if(isset($_GET['product'])){
@@ -46,18 +47,21 @@ if($product)
                 
             </div>
             <div class="row">
-                <div class="d-flex align-items-center mt-2">
-         <button onclick="changeQty(this, -1)">-</button>
-         <input type="number" class="qty form-control text-center mx-2"
-             style="width:60px;" value="1" min="1">
-        <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                </div>
-                
+            <div class="col-md-12">
+                <div class="product_data">
+    <div class="input-group mb-3" style="width:130px">
+  <button class="input-group-text decrement-btn">-</button>
+  <input type="text" class="form-control text-center input-qty bg-white" value="1" min="1" readonly>
+<button class="input-group-text increment-btn">+</button>
+</div>
+</div></div>
+    
+             
                <div class="row mt-3">
-                <div class="col-md-6">
-         <button class="btn btn-primary px-4 addToCartBtn" value="<?= $product['id'];?>"><i class="fa fa-shopping-cart me-2"></i>AddToCart</button>
+             <div class="col-md-6"> 
+       <button class="btn btn-primary px-4 addToCartBtn" value="<?=$product['id'];?>"><i class="fa fa-shopping-cart me-2"></i>Add To Cart</button>
               </div>
+          
 
               <div class="col-md-6">
               <button class="btn btn-danger px-4"><i class="fa fa-heart me-2"></i>wishlist</button>
@@ -70,9 +74,12 @@ if($product)
                 </div>
                 <hr>
             </div>
-            
             </div>
-        </div>
+            </div></div>
+            </div>
+           
+        
+    
   
 
  <?php
