@@ -44,12 +44,12 @@ $('.addToCartBtn').click(function (e) {
     }, 
     
     success: function (response) {
-      response = response.trim(); 
+    
       if(response === 201)
         {
         alertify.success("Product added to cart");
       }
-      else if(response === "existing")
+      else if(response == "existing")
         {
          alertify.warning("Product already in cart");
      }
