@@ -23,9 +23,9 @@ $(document).ready(function () {
  
 $(document).ready(function () {
  
-  $(document).on('click', '.addToCartBtn', function (e) {
-    e.preventDefault();
-
+$('.addToCartBtn').click(function (e) { 
+  e.preventDefault();
+  
 
 
   var qty = $(this).closest('.product_data').find('.input-qty').val();
@@ -44,7 +44,8 @@ $(document).ready(function () {
     }, 
     
     success: function (response) {
-      if(response == 201)
+      response = response.trim(); 
+      if(response === 201)
         {
         alertify.success("Product added to cart");
       }
