@@ -21,29 +21,29 @@ if(isset($_POST['scope']))
        $user_id =  (int) $_SESSION['auth_user']['user_id'];
 
 
-        $check_cart = "SELECT id FROM carts 
-                       WHERE prod_id='$prod_id' 
-                       AND user_id='$user_id'";
-        $check_cart_run = mysqli_query($conn, $check_cart);
+      //  $check_cart = "SELECT id FROM carts 
+                       //WHERE prod_id='$prod_id' 
+                      // AND user_id='$user_id'";
+       // $check_cart_run = mysqli_query($conn, $check_cart);
 
-        if (mysqli_num_rows($check_cart_run) > 0)
-         {
-            echo "existing";
-          
-        }
-        else
-        {
+       // if (mysqli_num_rows($check_cart_run) > 0)
+       //  {
+          //  echo "existing";
+       //   
+       // }
+       // else
+       // {
             //Insert new cart item
-       $insert_cart= "INSERT INTO carts (user_id,prod_id,prod_qty)VALUES ('$user_id' , '$prod_id' , '$prod_qty')";
-        $insert_cart_run= mysqli_query($conn,$insert_cart);
+       $sql= "INSERT INTO carts (user_id,prod_id,prod_qty)VALUES ('$user_id' , '$prod_id' , '$prod_qty')";
+        $result= mysqli_query($conn,$sql);
         if($insert_cart_run)
         {
        echo 201;
         }
         else{
             echo 500;
-        }
-    }
+ }
+    
     
        break;
 
@@ -56,6 +56,6 @@ if(isset($_POST['scope']))
 else{
     echo "401";
 
-}
-}
+}}
+
 ?>

@@ -21,9 +21,8 @@ $(document).ready(function () {
 
  //addtocart
  
-$(document).ready(function () {
  
-$('.addToCartBtn').click(function (e) { 
+$(document).on('click','.addToCartBtn',function (e) { 
   e.preventDefault();
   
 
@@ -74,7 +73,7 @@ $('.addToCartBtn').click(function (e) {
     });
    });
 
-  });
+
 
 
  

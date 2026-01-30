@@ -59,13 +59,13 @@ if($product)
              
    <div class="row mt-3">
              <div class="col-md-6"> 
-       <button class="btn btn-primary px-4 addToCartBtn" value="<?=$product['id'];?>"><i class="fa fa-shopping-cart me-2"></i>Add To Cart</button>
+       <button type="button" class="btn btn-primary px-4 addToCartBtn" value="<?=$product['id'];?>"><i class="fa fa-shopping-cart me-2"></i>Add To Cart</button>
               </div>
               </div>
           
 
               <div class="col-md-6">
-              <button class="btn btn-danger px-4"><i class="fa fa-heart me-2"></i>wishlist</button>
+              <button type="button" class="btn btn-danger px-4"><i class="fa fa-heart me-2"></i>wishlist</button>
             </div> 
              <hr>
             </div>
