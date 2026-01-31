@@ -54,13 +54,13 @@ if($product)
 <button class="input-group-text increment-btn">+</button>
 </div>
 </div>
-    
+    </div>
              
    <div class="row mt-3">
              <div class="col-md-6"> 
        <button type="button" class="btn btn-primary px-4 addToCartBtn" value="<?=$product['id'];?>"><i class="fa fa-shopping-cart me-2"></i>Add To Cart</button>
               </div>
-              </div>
+             
           
 
               <div class="col-md-6">
@@ -76,7 +76,7 @@ if($product)
             </div>
             </div>
             </div></div>
-            </div>
+            </div></div>
            
         
     

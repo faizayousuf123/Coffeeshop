@@ -1,12 +1,18 @@
 $(document).ready(function () {
-  $(document).on('click', '.increment-btn', function () {
-    let input = $(this).siblings('.input-qty');
-    let val = parseInt(input.val()) || 1;
   
-    if (val < 10) {
-      input.val(val + 1);
-    }
+  $('.increment-btn').click(function (e) { 
+    e.preventDefault();
+
+     var qty = $('.input-qty').val(newvalue);
+  var value = parseInt(qty , 10);
+  value = isNaN(value) ? 0: value;
+  if(value < 10){
+    value++;
+    $('.input-qty').val(newvalue);
+  }
+    
   });
+});
   
   $(document).on('click', '.decrement-btn', function () {
     let input = $(this).siblings('.input-qty');
@@ -16,7 +22,7 @@ $(document).ready(function () {
       input.val(val - 1);
     }
   }); 
-});
+
   
 
  //addtocart
