@@ -48,6 +48,8 @@ $(document).on('click','.addToCartBtn',function (e) {
         {
         alertify.success("Product added to cart");
       }
+      
+      
       else if(response == "existing")
         {
          alertify.warning("Product already in cart");
