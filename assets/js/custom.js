@@ -36,51 +36,30 @@ $('.addToCartBtn').click(function (e) {
   e.preventDefault();
 
   var qty = $(this).closest('.product_data').find('.input-qty').val();
+  var prod_id= $(this).val();
+  
 
-   var prod_id = $(this).val();
-
- 
-
-   $.ajax({
-    method: "POST",
+  $.ajax({
+    type: "POST",
     url: "functions/handlecart.php",
     data: {
-     "prod_id" : prod_id,
-      "prod_qty" : qty,
-      "scope" :"add"
-    }, 
-    
+      "prod_id" :prod_id,
+      "prod_qty" :qty,
+      "scope" : "add"
+
+    },
+   
     success: function (response) {
-    
-      if(response == 201)
-        {
-        alertify.success("Product added to cart");
+      if(response== 201){
+        alertify.success("Product Added to cart");
       }
-    
-        
-      else if(response == 401)
-        {
-       
-        alertify.success("Please login first to add items to cart");setTimeout(function () {
-          window.location.href = "login.php";
-        }, 1500);
-      
-    }
-      else if(response == 500)
-        {
-       
+      else if(response== 401){
+        alertify.success("Login to continue");
+      }
+      else if(response== 500){
         alertify.success("something went wrong");
       }
-
-      }
-        
-      
-    });
-   });
-
-
-
-
- 
+    }
+  });
   
-  
+}); 
