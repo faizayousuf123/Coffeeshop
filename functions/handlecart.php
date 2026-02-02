@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 include('../config.php');
 
 
@@ -13,12 +12,12 @@ if(isset($_POST['scope']))
     switch ($scope) {
         case "add":
 
-       $prod_id = (int) $_POST['prod_id'];
+       $prod_id =  $_POST['prod_id'];
       // $prod_qty = isset($_POST['prod_qty']) && $_POST['prod_qty'] > 0
          //   ? (int)$_POST['prod_qty']
          //   : 1;
-       $pro_qty = (int) $_POST['prod_qty'];
-       $user_id =  (int) $_SESSION['auth_user']['user_id'];
+       $pro_qty = $_POST['prod_qty'];
+       $user_id = $_SESSION['auth_user']['user_id'];
 
 
       //  $check_cart = "SELECT id FROM carts 
@@ -36,7 +35,7 @@ if(isset($_POST['scope']))
             //Insert new cart item
        $sql= "INSERT INTO carts (user_id,prod_id,prod_qty)VALUES ('$user_id' , '$prod_id' , '$prod_qty')";
         $result= mysqli_query($conn,$sql);
-        if($insert_cart_run)
+        if($result)
         {
        echo 201;
         }

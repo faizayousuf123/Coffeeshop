@@ -44,8 +44,8 @@ if($product)
                 <h5>Rs<s class="text-danger"> <?=$product['original_price']; ?> </s></h5>
                     
                 </div>
-                
-            </div>
+                 </div>
+                 
             <div class="row product_data">
             <div class="col-md-12">
     <div class="input-group mb-3" style="width:130px">

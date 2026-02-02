@@ -3,35 +3,37 @@ $(document).ready(function () {
   $('.increment-btn').click(function (e) { 
     e.preventDefault();
 
-     var qty = $('.input-qty').val(newvalue);
+     var qty = $(this).closest('.product_data').find('.input-qty').val();
   var value = parseInt(qty , 10);
   value = isNaN(value) ? 0: value;
-  if(value < 10){
+  if(value < 20){
     value++;
-    $('.input-qty').val(newvalue);
+    $(this).closest('.product_data').find('.input-qty').val(value);
   }
     
   });
 });
   
-  $(document).on('click', '.decrement-btn', function () {
-    let input = $(this).siblings('.input-qty');
-    let val = parseInt(input.val()) || 1;
+$('.decrement-btn').click(function (e) { 
+  e.preventDefault();
+
+   var qty = $(this).closest('.product_data').find('.input-qty').val();
+var value = parseInt(qty , 10);
+value = isNaN(value) ? 0: value;
+if(value > 0){
+  value--;
+  $(this).closest('.product_data').find('.input-qty').val(value);
+}
   
-    if (val > 1) {
-      input.val(val - 1);
-    }
-  }); 
+}); 
 
   
 
  //addtocart
  
  
-$(document).on('click','.addToCartBtn',function (e) { 
+$('.addToCartBtn').click(function (e) { 
   e.preventDefault();
-  
-
 
   var qty = $(this).closest('.product_data').find('.input-qty').val();
 
@@ -45,21 +47,16 @@ $(document).on('click','.addToCartBtn',function (e) {
     data: {
      "prod_id" : prod_id,
       "prod_qty" : qty,
-      "scope" : "add"
+      "scope" :"add"
     }, 
     
     success: function (response) {
     
-      if(response === 201)
+      if(response == 201)
         {
         alertify.success("Product added to cart");
       }
-      
-      
-      else if(response == "existing")
-        {
-         alertify.warning("Product already in cart");
-     }
+    
         
       else if(response == 401)
         {
