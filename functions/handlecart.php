@@ -13,9 +13,9 @@ if(isset($_POST['scope']))
         case "add":
 
        $prod_id =  $_POST['prod_id'];
-      // $prod_qty = isset($_POST['prod_qty']) && $_POST['prod_qty'] > 0
-         //   ? (int)$_POST['prod_qty']
-         //   : 1;
+       //$prod_qty = isset($_POST['prod_qty']) && $_POST['prod_qty'] > 0
+           // ? $_POST['prod_qty']
+           // : 1;
        $pro_qty = $_POST['prod_qty'];
        $user_id = $_SESSION['auth_user']['user_id'];
 

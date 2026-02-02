@@ -5,9 +5,10 @@
   <script>
 alertify.set('notifier','position', 'top-right');
 
-    <?php if(isset($_SESSION['message'])) {?>
+    <?php if(isset($_SESSION['message'])) {
+      ?>
     
-     alertify.success('<?=$_SESSION['message']; ?>');
+    alertify.success("<?= addslashes($_SESSION['message']); ?>");
      <?php
    unset($_SESSION['message']);
      }
