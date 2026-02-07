@@ -18,6 +18,9 @@ session_start();
         <li class="nav-item">
           <a class="nav-link active"  aria-current="page" href="categories.php">Collections</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active"  aria-current="page" href="cart.php">cart</a>
+        </li>
         <?php 
         if(isset($_SESSION['register']))
 

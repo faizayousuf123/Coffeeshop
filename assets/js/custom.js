@@ -1,18 +1,20 @@
+
 $(document).ready(function () {
   
   $('.increment-btn').click(function (e) { 
-    e.preventDefault();
+    e.preventDefault(); 
 
      var qty = $(this).closest('.product_data').find('.input-qty').val();
-  var value = parseInt(qty , 10);
+  var value = parseInt(qty,10);
+  
   value = isNaN(value) ? 0: value;
   if(value < 20){
     value++;
-    $(this).closest('.product_data').find('.input-qty').val(value);
+   $(this).closest('.product_data').find('.input-qty').val(value);
   }
-    
-  });
-});
+}); 
+}); 
+  
   
 $('.decrement-btn').click(function (e) { 
   e.preventDefault();
@@ -32,14 +34,22 @@ if(value > 0){
  //addtocart
  
  
-$('.addToCartBtn').click(function (e) { 
+ $('.addToCartBtn').click(function (e) { 
   e.preventDefault();
 
-  var qty = $(this).closest('.product_data').find('.input-qty').val();
-  var prod_id= $(this).val();
+ 
+  let qty = $(this).closest('.row').prev('.row').find('.input-qty').val();
+    let prod_id = $(this).val();
+
+    // Default safety
+    qty = parseInt(qty);
+    if (isNaN(qty) || qty <= 0) qty = 1;
+
+    console.log("Qty =", qty);
+    console.log("Product ID =", prod_id);
   
 
-  $.ajax({
+ $.ajax({
     type: "POST",
     url: "functions/handlecart.php",
     data: {
@@ -50,16 +60,22 @@ $('.addToCartBtn').click(function (e) {
     },
    
     success: function (response) {
-      if(response== 201){
+      if(response == 201){
         alertify.success("Product Added to cart");
       }
-      else if(response== 401){
+      else if(response == 401){
         alertify.success("Login to continue");
+        setTimeout(function () {
+          window.location.href = "login.php";
+        }, 1500); // 1.5 second baad redirect
       }
-      else if(response== 500){
+        
+      
+      else if(response == 500){
         alertify.success("something went wrong");
       }
     }
   });
   
 }); 
+

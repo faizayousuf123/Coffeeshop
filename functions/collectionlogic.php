@@ -1,4 +1,6 @@
 <?php 
+
+
 require_once __DIR__ . '/../config.php'; // collectionlogic.php ke liye
 
 
@@ -23,16 +25,28 @@ function getIDActive($table , $id){
 global $conn;
   $sql="Select * FROM $table WHERE id='$id' AND status='1'";
   return mysqli_query($conn, $sql);
+
 }
+//cart function
+function getCartItems()
+{
+  global $conn;
+  if (!isset($_SESSION['auth'])) {
+    echo 401;
+    exit();
+
+
+}
+  $userId = $_SESSION['auth_user']['user_id'];
+  $sql = "Select c.id as cid,c.prod_id ,c.prod_qty,p.id as pid,p.name,p.image,
+  p.selling_price FROM carts c, products p WHERE c.prod_id = p.id AND c.user_id='$userId' ORDER by c.id DESC";
+
+  return mysqli_query($conn, $sql);
+} 
 function getprodByCategory($category_id){
  global $conn;
 
 $category_id = (int) $category_id; 
-
-//if (!isset($conn)) {
- // die("Database connection not found!");
-//}    
-
 
   $sql="SELECT * FROM products WHERE category_id='$category_id' AND status='1' ";
  $result = mysqli_query($conn, $sql);
