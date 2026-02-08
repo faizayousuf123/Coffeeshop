@@ -73,6 +73,10 @@ if(value > 0){
   
   
 }); 
+$(selector).on('click','.updateQty', function () {
+  alert("hello");
+});
+
 
 
 

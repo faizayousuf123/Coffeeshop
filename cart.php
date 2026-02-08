@@ -67,9 +67,9 @@ include('includes/navbar.php');
                     <div class="col-md-2">
                  
     <div class="input-group mb-3" style="width:130px">
-  <button class="input-group-text decrement-btn">-</button>
+  <button class="input-group-text decrement-btn updateQty">-</button>
   <input type="text" class="form-control text-center input-qty bg-white" value="<?= $citem['prod_qty'] ?>" min="1" readonly>
-<button class="input-group-text increment-btn">+</button>
+<button class="input-group-text increment-btn updateQty">+</button>
 </div>
 </div>
 
