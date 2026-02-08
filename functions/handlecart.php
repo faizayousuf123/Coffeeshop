@@ -9,24 +9,35 @@ if(isset($_SESSION['auth']))
     {
       $scope =$_POST['scope'];
       switch($scope){
+        
         case "add":
         $prod_id=$_POST['prod_id'];
         $prod_qty=$_POST['prod_qty'];
         $user_id= $_SESSION['auth_user']['auth_id'];
 
+        $chk_existing_cart = "SELECT * FROM carts WHERE prod_id='$prod_id' AND user_id='$$user_id'";
+        $chk_existing_cart =mysqli_query($conn,$chk_existing_cart);
+        if(mysqli_num_rows($chk_existing_cart)>0)
+        {
+          echo "existing";
+        }
+        else{
         $insert_query="Insert INTO carts(user_id,prod_id,prod_qty) VALUES ('$user_id','$prod_id','$prod_qty')";
-$insert_query_run=mysqli_query($conn,$insert_query);
+   $insert_query_run=mysqli_query($conn,$insert_query);
 
-if($insert_query_run){
+if($insert_query_run)
+{
     echo 201; 
 }
-else{
+else
+{
     echo 500;
 }
-
+        }
         break;
         default:
         echo 500;
+       
       }
     }
 }

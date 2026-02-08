@@ -27,17 +27,11 @@ global $conn;
   return mysqli_query($conn, $sql);
 
 }
-//cart function
+// Display cart function
 function getCartItems()
 {
   global $conn;
-  if (!isset($_SESSION['auth'])) {
-    echo 401;
-    exit();
-
-
-}
-  $userId = $_SESSION['auth_user']['user_id'];
+ $userId = $_SESSION['auth_user']['user_id'];
   $sql = "Select c.id as cid,c.prod_id ,c.prod_qty,p.id as pid,p.name,p.image,
   p.selling_price FROM carts c, products p WHERE c.prod_id = p.id AND c.user_id='$userId' ORDER by c.id DESC";
 

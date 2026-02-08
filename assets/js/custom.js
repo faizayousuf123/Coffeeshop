@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
   
   $('.increment-btn').click(function (e) { 
@@ -32,24 +31,14 @@ if(value > 0){
   
 
  //addtocart
- 
- 
  $('.addToCartBtn').click(function (e) { 
   e.preventDefault();
 
  
-  let qty = $(this).closest('.row').prev('.row').find('.input-qty').val();
+  var qty = $(this).closest('.product_data').find('.input-qty').val();
     let prod_id = $(this).val();
 
-    // Default safety
-    qty = parseInt(qty);
-    if (isNaN(qty) || qty <= 0) qty = 1;
-
-    console.log("Qty =", qty);
-    console.log("Product ID =", prod_id);
-  
-
- $.ajax({
+  $.ajax({
     type: "POST",
     url: "functions/handlecart.php",
     data: {
@@ -63,6 +52,9 @@ if(value > 0){
       if(response == 201){
         alertify.success("Product Added to cart");
       }
+      else if(response == "existing"){
+        alertify.success("Product already in cart");
+      }
       else if(response == 401){
         alertify.success("Login to continue");
         setTimeout(function () {
@@ -75,7 +67,12 @@ if(value > 0){
         alertify.success("something went wrong");
       }
     }
+    
+
   });
   
+  
 }); 
+
+
 
