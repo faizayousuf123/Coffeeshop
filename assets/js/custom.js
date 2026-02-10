@@ -73,9 +73,31 @@ if(value > 0){
   
   
 }); 
+
+//update cart wd ajax
 $(selector).on('click','.updateQty', function () {
-  alert("hello");
+   var qty=$(this).closest('.product_data').find('.input_qty').val();
+   var prod_id=$(this).val;
+   alert(qty);
+
+   $.ajax({
+    type: "POST",
+    url: "functions/handlecart.php",
+    data: {
+      "prod_id":prod_id,
+      "prod_qty":qty,
+      "scope":"update",
+    },
+    
+    success: function (response) {
+      (response==200)
+       // alert('response');
+      }
+    
+   });
+ 
 });
+
 
 
 

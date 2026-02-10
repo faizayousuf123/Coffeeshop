@@ -48,6 +48,7 @@ if($product)
                  
             <div class="row product_data">
             <div class="col-md-12">
+                <input type="hidden" class="prodId" value="<?= $citem['$prod_id'] ?>">
     <div class="input-group mb-3" style="width:130px">
   <button class="input-group-text decrement-btn">-</button>
   <input type="text" class="form-control text-center input-qty bg-white" value="1" min="1" readonly>
@@ -56,9 +57,9 @@ if($product)
 </div>
     </div>
              
-   <div class="row mt-3">
+   <div class="row product_data mt-3">
              <div class="col-md-6"> 
-       <button class="btn btn-primary px-4 addToCartBtn" value="<?=$product['id'];?>"><i class="fa fa-shopping-cart me-2"></i>Add To Cart</button>
+       <button class="btn btn-primary px-4 addToCartBtn" value="<?=$product['id'];?>">Add To Cart</button>
               </div>
              
           

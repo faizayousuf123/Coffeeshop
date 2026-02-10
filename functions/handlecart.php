@@ -15,7 +15,7 @@ if(isset($_SESSION['auth']))
         $prod_qty=$_POST['prod_qty'];
         $user_id= $_SESSION['auth_user']['auth_id'];
 
-        $chk_existing_cart = "SELECT * FROM carts WHERE prod_id='$prod_id' AND user_id='$$user_id'";
+        $chk_existing_cart = "SELECT * FROM carts WHERE prod_id='$prod_id' AND user_id='$user_id'";
         $chk_existing_cart =mysqli_query($conn,$chk_existing_cart);
         if(mysqli_num_rows($chk_existing_cart)>0)
         {
@@ -35,6 +35,31 @@ else
 }
         }
         break;
+        case "update":
+          $prod_id=$_POST['prod_id'];
+          $prod_qty=$_POST['prod_qty'];
+          $user_id= $_SESSION['auth_user']['auth_id'];
+  
+          $chk_existing_cart = "SELECT * FROM carts WHERE prod_id='$prod_id' AND user_id='$user_id'";
+          $chk_existing_cart =mysqli_query($conn,$chk_existing_cart);
+          if(mysqli_num_rows($chk_existing_cart)>0)
+          {
+         $update_query="UPDATE carts SET prod_qty='$prod_qty' WHERE prod_id='$prod_id'";
+         $update_query_run=mysqli_query($conn,$update_query);
+          }
+          else{
+            echo "something wrong";
+          }
+          if($update_query_run)
+          {
+            echo 200;
+          }
+          else
+          {
+            echo 500;
+
+          }
+          break;
         default:
         echo 500;
        
